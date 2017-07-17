@@ -1,7 +1,5 @@
 ## To run
 
-CSLinux:
-
 python SudokuSolver.py target_puzzle.txt Algorithm
 
 eg. python SudokuSolver.py puzzle1.txt BF
