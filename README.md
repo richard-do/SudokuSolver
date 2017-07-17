@@ -1,6 +1,6 @@
 ## To run
 
-To run on cslinux:
+CSLinux:
 
 python SudokuSolver.py target_puzzle.txt Algorithm
 
