@@ -1,21 +1,20 @@
+###Requirements
+
+Python v3 and beyond
+
 ###To run
 
-To run on cslinux:
+python SudokuSolver.py target_puzzle.txt Algorithm
 
-python2 SudokuSolver.py target_puzzle.txt Algorithm
+eg. python SudokuSolver.py puzzle1.txt BF
 
-eg. python2 SudokuSolver.py puzzle1.txt BF
-python2 SudokuSolver.py puzzle2.txt FC-MRV
-python2 SudokuSolver.py puzzle3.txt BT
+#######Algorithms
 
 BF = Brute Force
 FC-MRV = Forward Checking (Minimum remaining values)
 BT = Backtrack
 
-- .txt may not be needed for filename
-- may need to replace python2 with path if environmental variable is not set up
-
-###Formatting target_puzzle
+###Formatting
 
 0 0 0 0 0 8 0 4 0
 0 9 0 6 0 0 8 0 3

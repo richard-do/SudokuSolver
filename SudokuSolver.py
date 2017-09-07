@@ -9,13 +9,13 @@ start_time = int(time.time()*1000)
 def main():
 
 	if len(sys.argv) is not 3:
-		print "Usage: SudokuSolver.py puzzlefile.txt algorithm"
+		print("Usage: SudokuSolver.py puzzlefile.txt algorithm")
 
 	with open(sys.argv[1], 'r') as txt:
 		data = txt.read().replace(" ", "")
 
 	if isValid(data) is False:
-		print "Invalid puzzle or format"
+		print("Invalid puzzle or format")
 		return 0
 
 	sudoku = Puzzle(data)
@@ -46,7 +46,7 @@ def main():
 		prtout(sol)
 
 	else:
-		print "Invalid option. Usage: BF BT FC-MRV"
+		print("Invalid option. Usage: BF BT FC-MRV")
 
 	return 0
 
@@ -180,9 +180,9 @@ def prtout(sol):
 
 	"Output solution"
 	if sol[0] is None:
-		print "No solution found"
+		print("No solution found")
 	else:
-		print sol[0]
+		print(sol[0])
 
 	running_time = int(time.time()*1000) - start_time
 	T = "Total clock time: " + str(running_time)
@@ -190,16 +190,16 @@ def prtout(sol):
 	N = "Nodes explored: " + str(node_count)
 
 	"Output preformance to screen"
-	print T
-	print S
-	print N
+	print(T)
+	print(S)
+	print(N)
 
 	"Output solution and preformance to files"
 	if sys.argv[1][:6] == "puzzle":
 		if sol[0] is not None:
 			solution = "solution" + sys.argv[1][-5:]
 			f = open(solution, "w")
-			print >>f, sol[0]
+			print (sol[0], file=f)
 			f.close()
 
 		preformance = "preformance" + sys.argv[1][-5:]
@@ -211,7 +211,7 @@ def prtout(sol):
 		if sol[0] is not None:
 			solution = "solution" + sys.argv[1][-5:]
 			f = open(solution, "w")
-			print >>f, sol[0]
+			print (sol[0], file=f)
 			f.close()
 
 		preformance = "preformance_" + sys.argv[1]

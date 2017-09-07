@@ -70,44 +70,6 @@ class Puzzle:
 
 		return updatedList
 
-	def findDup(self):
-		"Check to see if any duplicate values exist within the puzzle"
-		valCol = []
-		valRow = []
-
-		"Check each column and row for duplicate values"
-		for x in range(9):
-			for y in range(9):
-				if ((self.puzzle[x][y] is not 0 and self.puzzle[y][x] is not 0) and
-					(self.puzzle[x][y] in valCol or self.puzzle[y][x] in valRow)):
-					return True
-				else:
-					valCol.append(self.puzzle[x][y])
-					valRow.append(self.puzzle[y][x])
-			valCol, valRow = [], []
-
-		vals = []
-		x, y = 0, 0
-		"Check each 3x3 box for duplicate values"
-		for box in range(9):
-			for col in range(3):
-				for row in range(3):
-					if (self.puzzle[col+(x*3)][row+(x*3)] in vals and
-						self.puzzle[col+(x*3)][row+(x*3)] is not 0):
-						return True
-					else:
-						vals.append(self.puzzle[col+(x*3)][row+(x*3)])
-
-			"Checks left to right, up to down"
-			if x != 2:
-				x += 1
-			else:
-				x = 0
-				y += 1
-			vals = []
-		
-		return False
-
 	def check(self, coords, val):
 		"Checks if the input value is not a duplicate of another"
 		"within the same row, column, and 3x3."
@@ -157,21 +119,62 @@ class Puzzle:
 		moveX = x%3
 		moveY = y%3
 
-		"Checks 3x3 for duplicate values.  Use mod 3 to put column and row"
-		"into the correct starting points."
+		"Checks 3x3s"
 		for i in range(3):
 			for j in range(3):
 				if num in self.pValues[i+(x-moveX)][j+(y-moveY)]:
 					self.pValues[i+(x-moveX)][j+(y-moveY)].remove(num)
 		return 0
 
+	def checkBoxes(self):
+		vals = []
+		x, y = 0, 0
+		"Check each 3x3 box for duplicate values"
+		for box in range(9):
+			for col in range(3):
+				for row in range(3):
+					if (self.puzzle[col+(x*3)][row+(x*3)] in vals and
+						self.puzzle[col+(x*3)][row+(x*3)] is not 0):
+						return True
+					else:
+						vals.append(self.puzzle[col+(x*3)][row+(x*3)])
+
+			"Checks left to right, up to down"
+			if x != 2:
+				x += 1
+			else:
+				x = 0
+				y += 1
+			vals = []
+		
+		return False
+
+	def findDup(self):
+		"Check to see if any duplicate values exist within the puzzle"
+		valCol = []
+		valRow = []
+
+		"Check each column and row for duplicate values"
+		for x in range(9):
+			for y in range(9):
+				if ((self.puzzle[x][y] is not 0 and self.puzzle[y][x] is not 0) and
+					(self.puzzle[x][y] in valCol or self.puzzle[y][x] in valRow)):
+					return True
+				else:
+					valCol.append(self.puzzle[x][y])
+					valRow.append(self.puzzle[y][x])
+			valCol, valRow = [], []
+
+		if self.checkBoxes() is True: return True;
+		
+		return False
+
 	def checkGoalState(self):
 		"Returns True if goal state was met."
 		valCol = []
 		valRow = []
 
-		"Check to see if any duplicate values exist in columns, row, or"
-		"if any unfilled values exist."
+		"Check to see if any duplicate or unfilled values exists"
 		for x in range(9):
 			for y in range(9):
 				if (self.puzzle[x][y] in valCol or
@@ -183,24 +186,7 @@ class Puzzle:
 					valRow.append(self.puzzle[y][x])
 			valCol, valRow = [], []
 
-		vals = []
-		x, y = 0, 0
-		"Check each 3x3 box for duplicate values"
-		for box in range(9):
-			for col in range(3):
-				for row in range(3):
-					if self.puzzle[col+(x*3)][row+(x*3)] in vals:
-						return False
-					else:
-						vals.append(self.puzzle[col+(x*3)][row+(x*3)])
-
-			"Checks left to right, up to down"
-			if x != 2:
-				x += 1
-			else:
-				x = 0
-				y += 1
-			vals = []
+		if self.checkBoxes() is True: return False;
 		
 		return True
 
