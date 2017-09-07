@@ -1,28 +1,20 @@
-###Requirements
+### Requirements
 
 Python v3 and beyond
 
-###To run
+### To run
 
 python SudokuSolver.py target_puzzle.txt Algorithm
 
 eg. python SudokuSolver.py puzzle1.txt BF
 
-###Algorithms
+### Algorithms
 
 BF = Brute Force
 
 FC-MRV = Forward Checking (Minimum remaining values)
 
 BT = Backtrack
-
-###Formatting
-
-- .txt may not be needed for filename
-
-- may need to replace python with path if environmental variable is not set up
-
-- may not work on versions below python 2.0
 
 ### Formatting target_puzzle
 
