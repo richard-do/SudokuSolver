@@ -4,9 +4,19 @@ Python v3 and beyond
 
 ### To run
 
-python SudokuSolver.py target_puzzle.txt Algorithm
+Install Python through Windows Store
 
-eg. python SudokuSolver.py puzzle1.txt BF
+Run IDLE Python
+
+Open SudokuSolver.py
+
+Shift + F5 for customized run (to allow command line arguments)
+
+In the box that appears, input: target_puzzle.txt algorithm
+
+eg. ./target_puzzle.txt BF
+
+If the file is in the same folder, prefix with ./puzzle_file.txt otherwise provide absolute path to file.
 
 ### Algorithms
 
