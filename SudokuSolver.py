@@ -8,7 +8,7 @@ start_time = int(time.time()*1000)
 
 def main():
 
-	if len(sys.argv) is not 3:
+	if len(sys.argv) is not 2:
 		print("Usage: SudokuSolver.py puzzlefile.txt algorithm")
 
 	with open(sys.argv[1], 'r') as txt:
@@ -214,9 +214,9 @@ def prtout(sol):
 			print (sol[0], file=f)
 			f.close()
 
-		preformance = "preformance_" + sys.argv[1]
-		f = open(preformance, "w")
-		f.write(T+"\n"+S+"\n"+N)
+		performance = "performance_" + sys.argv[1][-5:]
+		f = open(performance, "w")
+		print (T+"\n"+S+"\n"+N, file=f)
 		f.close()
 
 	return 0
