@@ -8,15 +8,17 @@ Install Python through Windows Store
 
 Run IDLE Python
 
-Open SudokuSolver.py
+File > Open > Find SudokuSolver.py on your system
 
-Shift + F5 for customized run (to allow command line arguments)
+Run > Run ... Customized (Or Shift + F5) which allows input of command line arguments
 
 In the box that appears, input: target_puzzle.txt algorithm
 
 eg. ./target_puzzle.txt BF
 
-If the file is in the same folder, prefix with ./puzzle_file.txt otherwise provide absolute path to file.
+If the file is in the same folder, prefix with ./ otherwise provide absolute path to file.
+
+Older versions of python may require fiddling with the location of each command line argument to get this to work.
 
 ### Algorithms
 
